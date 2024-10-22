@@ -12,8 +12,8 @@
 
 <body>
     <div class="container">
-        <div id="timer-display">00:00:00</div>
-
+        <div id="timer-display">00:00:00</div>            <!-- See if can add bootstrap stuff like bootstrap start stop, fancy shit  --> 
+                                <!-- Also need interactive reminder for what to do when timer goes to zero or if time say > 2 hr every hr say break.  --> 
         <div class="input-group">
             <label for="study-hours">Hours:</label>
             <input type="number" id="study-hours" min="0" placeholder="0">
@@ -25,9 +25,13 @@
 
         <div class="button-container">
             <button id="start-timer">Start Timer</button>
-            <button id="stop-timer">Stop/Reset Timer</button>
+            <button id="stop-timer">Stop & Reset Timer</button>
         </div>
 
     </div>
+
+    <!-- Add this audio element -->
+    <audio id="alarm-sound" src="sound.mp3" preload="auto"></audio>
 </body>
 </html>
+

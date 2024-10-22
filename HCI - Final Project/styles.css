@@ -2,19 +2,19 @@ body {
     margin: 0;
     display: flex;
     justify-content: center; /* Center the container horizontally */
-    align-items: center; /* Center the container vertically */
+    align-items: center; 
     height: 100vh; /* Full viewport height */
     background-color: #eff0ee;
     font-family: Arial, sans-serif;
 }
 
 .container {
-    border: 10px solid black; /* Thick black border */
-    border-radius: 15px; /* Rounded corners */
+    border: 10px solid black; 
+    border-radius: 15px; 
     padding: 20px; /* Space between border and content */
-    background-color: white; /* Background color of the container */
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* Optional shadow */
-    text-align: center; /* Center text within the container */
+    background-color: white; 
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); 
+    text-align: center; 
 }
 
 #timer-display {
@@ -42,9 +42,7 @@ button {
     margin: 5px;
     font-size: 16px;
     cursor: pointer;
-    border: none;
     border-radius: 4px;
-    transition: background-color 0.3s;
 }
 
 #start-timer {
@@ -53,12 +51,12 @@ button {
 }
 
 #stop-timer {
-    background-color: red;
+    background-color: rgb(180, 4, 4);
     color: white;
 }
 
 button:hover {
-    opacity: 0.9;
+    opacity: 0.8;
 }
 
 .button-container {
