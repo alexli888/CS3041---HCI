@@ -1,9 +1,11 @@
+/* Global Styles */
 body {
     margin: 0;
     display: flex;
-    justify-content: center; /* Center the container horizontally */
-    align-items: center; 
-    height: 100vh; /* Full viewport height */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
     background-color: #eff0ee;
     font-family: Arial, sans-serif;
 }
@@ -17,14 +19,53 @@ body {
     text-align: center; 
 }
 
+/* Welcome Message Styling */
+#welcome-message {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+/* Button Styling */
+.button-group {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.button {
+    text-decoration: none;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.button:hover {
+    opacity: 0.8;
+}
+
+.icon {
+    width: 20px;
+    height: 20px;
+}
+
+/* Timer Display Styling */
 #timer-display {
     font-size: 48px;
     margin: 20px 0;
     padding: 20px;
-    border: 5px solid black; /* Inner border for the timer display */
+    border: 5px solid black;
     border-radius: 10px;
     width: fit-content;
-    display: inline-block; /* Ensures it takes only the required width */
+    display: inline-block;
+    background-color: white;
 }
 
 .input-group {
@@ -35,6 +76,13 @@ input[type="number"] {
     width: 60px;
     padding: 5px;
     margin: 5px;
+}
+
+/* Button Container and Timer Buttons */
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 button {
@@ -59,8 +107,35 @@ button:hover {
     opacity: 0.8;
 }
 
-.button-container {
+/* Login Form Styling */
+form {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
+}
+
+label {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"] {
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button[type="submit"] {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    opacity: 0.9;
 }

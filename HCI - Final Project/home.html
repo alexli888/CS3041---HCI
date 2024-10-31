@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-height, initial-scale=1.0, user-scalable=no">
+    <title>Home - Study Timer</title>
+    <link rel="icon" href="favicon.png" type="image/png">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1 id="welcome-message">Welcome to the Study Timer</h1> <!-- Will be updated with user's name -->
+        <p>This tool helps you manage your study time effectively with customizable reminders and breaks.</p>
+        
+        <div class="button-group">
+            <a href="timer.html" class="button">Go to Study Timer</a>
+            <a href="login.html" class="button login-button" id="login-button">
+                <img src="login-icon.png" alt="Login Icon" class="icon">
+                Login
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // Check if user is already "logged in" by looking for their name in sessionStorage
+        const userName = sessionStorage.getItem("userName");
+
+        if (userName) {
+            // Update welcome message
+            document.getElementById("welcome-message").textContent = `Welcome, ${userName}`;
+            
+            // Hide the login button
+            document.getElementById("login-button").style.display = "none";
+        }
+    </script>
+</body>
+
+</html>
