@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+        <!-- Hamburger Menu Button -->
+        <div class="menu-icon" id="menu-icon">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+            <!-- Dropdown Menu -->
+    <div class="dropdown-menu" id="dropdown-menu">
+        <a href="home.html">Home</a>
+        <a href="timer.html">Study Timer</a>
+        <a href="study-mode.html">Study Mode</a>
+        <a href="calendar.html">Calendar</a>
+        <a href="menu.html">Menu</a>
+    </div>
+
+<body>
+    <!-- <nav class="navbar">
+        <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="timer.html">Timer</a></li>
+            <li><a href="study-mode.html">Study Mode</a></li>
+            <li><a href="calendar.html">Calendar</a></li>
+            <li><a href="menu.html" class="active">Menu</a></li>
+        </ul>
+    </nav> -->
+    <main>
+        <div class="container">
+            <h2>Menu</h2>
+            <ul class="menu-list">
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="settings.html">Settings</a></li>
+                <li><a href="documentation.html">Help</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </div>
+    </main>
+    <script>
+        // Toggle menu visibility
+        document.getElementById("menu-icon").addEventListener("click", function() {
+            const menu = document.getElementById("dropdown-menu");
+            menu.classList.toggle("show");
+        });
+    </script>
+</body>
+
+</html>

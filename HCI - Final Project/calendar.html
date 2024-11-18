@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendar</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.6/main.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.6/index.global.min.js" defer></script>
+    <script defer src="calendar.js"></script>
+</head>
+        <!-- Hamburger Menu Button -->
+        <div class="menu-icon" id="menu-icon">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+
+            <!-- Dropdown Menu -->
+    <div class="dropdown-menu" id="dropdown-menu">
+        <a href="home.html">Home</a>
+        <a href="timer.html">Study Timer</a>
+        <a href="study-mode.html">Study Mode</a>
+        <a href="calendar.html">Calendar</a>
+        <a href="menu.html">Menu</a>
+    </div>
+
+<body>
+
+    </nav>
+    <main>
+        <div class="container">
+            <h2>Calendar</h2>
+            <div id="calendar"></div>
+        </div>
+    </main>
+    <script>
+        // Toggle menu visibility
+        document.getElementById("menu-icon").addEventListener("click", function() {
+            const menu = document.getElementById("dropdown-menu");
+            menu.classList.toggle("show");
+        });
+    </script>
+</body>
+
+</html>

@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-height, initial-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home - Study Timer</title>
     <link rel="icon" href="favicon.png" type="image/png">
     <link rel="stylesheet" href="styles.css">
@@ -11,29 +11,57 @@
 
 <body>
     <div class="container">
-        <h1 id="welcome-message">Welcome to the Study Timer</h1> <!-- Will be updated with user's name -->
+        <h1>Welcome to the Study Timer</h1>
         <p>This tool helps you manage your study time effectively with customizable reminders and breaks.</p>
-        
-        <div class="button-group">
-            <a href="timer.html" class="button">Go to Study Timer</a>
-            <a href="login.html" class="button login-button" id="login-button">
-                <img src="login-icon.png" alt="Login Icon" class="icon">
-                Login
+
+        <!-- Hamburger Menu Button -->
+        <div class="menu-icon" id="menu-icon">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+
+        <!-- Dropdown Menu -->
+        <div class="dropdown-menu" id="dropdown-menu">
+            <a href="home.html">Home</a>
+            <a href="timer.html">Study Timer</a>
+            <a href="study-mode.html">Study Mode</a>
+            <a href="calendar.html">Calendar</a>
+            <a href="menu.html">Menu</a>
+        </div>
+
+        <!-- Content Grid -->
+        <div class="feature-grid">
+            <a href="timer.html" class="feature-item">
+                <img src="timer-icon.png" alt="Timer">
+                <span>Timer</span>
             </a>
+            <a href="study-mode.html" class="feature-item">
+                <img src="study-mode-icon.png" alt="Study Mode">
+                <span>Study Mode</span>
+            </a>
+            <a href="calendar.html" class="feature-item">
+                <img src="calendar-icon.png" alt="Calendar">
+                <span>Calendar</span>
+            </a>
+            <!-- <a href="menu.html" class="feature-item">
+                <img src="menu-icon.png" alt="Menu">
+                <span>Menu</span>
+            </a> -->
         </div>
     </div>
 
-    <script>
-        // Check if user is already "logged in" by looking for their name in sessionStorage
-        const userName = sessionStorage.getItem("userName");
+    <!-- Question Mark Icon for Documentation -->
+    <a href="documentation.html" class="question-mark-icon" title="How to Use">
+        <img src="question-mark-icon.png" alt="Help">
+    </a>
 
-        if (userName) {
-            // Update welcome message
-            document.getElementById("welcome-message").textContent = `Welcome, ${userName}`;
-            
-            // Hide the login button
-            document.getElementById("login-button").style.display = "none";
-        }
+    <script>
+        // Toggle menu visibility
+        document.getElementById("menu-icon").addEventListener("click", function() {
+            const menu = document.getElementById("dropdown-menu");
+            menu.classList.toggle("show");
+        });
     </script>
 </body>
 

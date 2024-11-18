@@ -3,37 +3,284 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no">
-    <title>Customizable Study Timer</title>
-    <link rel="icon" href="favicon.png" type="image/png">
-    <link rel="stylesheet" href="styles.css"> 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-    <script src="script.js" defer></script> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Timer</title>
+    <script defer src="timer.js"></script>
+    
+    <style>
+        /* Global Font Styling */
+        body, h2, label, button {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 10px;
+        }
+
+        /* Hamburger Menu Button */
+        .menu-icon {
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 25px;
+            height: 20px;
+            position: absolute;
+            left: 10px;
+            top: 20px;
+        }
+
+        .menu-icon .bar {
+            width: 100%;
+            height: 4px;
+            background-color: black;
+        }
+
+        /* Dropdown Menu Styling */
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 50px;
+            left: 10px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 10px;
+            z-index: 1000;
+            font-weight:bold;
+        }
+
+        .dropdown-menu.show {
+            display: block;
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 8px;
+            color: black;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+
+        .dropdown-menu a:hover {
+            background-color: #f1f1f1;
+        }
+
+        /* Timer Display Styling (Updated for consistent border style) */
+        #timer-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            background-color: white;
+            border-radius: 10px;
+            border: 1px solid #ddd; /* Grey border for consistency */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Grey shadow like other pages */
+            padding: 20px;
+        }
+
+        #timer-display {
+            font-size: 48px;
+            margin: 20px 0;
+            padding: 20px;
+            background-color: white;
+            text-align: center;
+            border-radius: 10px;
+        }
+
+        /* Input Group Styling */
+        .input-group {
+            margin: 5px;
+            text-align: center; /* Center input elements */
+            font-weight: bold;
+        }
+
+        .input-group label {
+            margin-right: 10px;
+        }
+
+        input[type="number"] {
+            width: 60px;
+            padding: 5px;
+            margin: 5px;
+            text-align: center; /* Center the input text */
+        }
+
+        /* Button Container and Timer Buttons */
+        .button-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        #start-timer {
+            background-color: #4caf50;
+            color: white;
+        }
+
+        #stop-timer {
+            background-color: rgb(180, 4, 4);
+            color: white;
+        }
+
+        button:hover {
+            opacity: 0.8;
+        }
+
+        /* Hide the stop button initially */
+        .hidden {
+            display: none;
+        }
+
+    </style>
 </head>
 
 <body>
-    <div class="home-link-container"> <!-- New div for the back link -->
-        <a href="home.html" class="button">Back to Home</a>
+    
+    <!-- Hamburger Menu Button -->
+<!-- Question Mark Icon Container -->
+<!-- <div class="question-mark-container">
+    <a href="documentation.html" title="How to Use">
+        <img src="question-mark-icon.png" alt="Help">
+    </a>
+</div> -->
+
+    <div class="menu-icon" id="menu-icon">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
     </div>
 
-    <div class="container"> <!-- Main container for the timer -->
-        <div id="timer-display">00:00:00</div>
-        
-        <div class="input-group">
-            <label for="study-hours">Hours:</label>
-            <input type="number" id="study-hours" min="0" placeholder="0">
-            <label for="study-minutes">Minutes:</label>
-            <input type="number" id="study-minutes" min="0" placeholder="0">
-            <label for="study-seconds">Seconds:</label>
-            <input type="number" id="study-seconds" min="0" placeholder="0">
-        </div>
 
-        <div class="button-container">
-            <button id="start-timer">Start Timer</button>
-            <button id="stop-timer">Stop & Reset Timer</button>
-        </div>
+    
+    <!-- Dropdown Menu -->
+    <div class="dropdown-menu" id="dropdown-menu">
+        <a href="home.html">Home</a>
+        <a href="timer.html" class="active">Study Timer</a>
+        <a href="study-mode.html">Study Mode</a>
+        <a href="calendar.html">Calendar</a>
+        <a href="menu.html">Menu</a>
     </div>
+
+    <main>
+        <div class="container">
+            <!-- Removed the Study Timer label -->
+            <div id="timer-container">
+                <div id="timer-display">00:00:00</div>
+                
+                <div class="input-group">
+                    <label for="study-hours">Hours:</label>
+                    <input type="number" id="study-hours" min="0" placeholder="0">
+                    <label for="study-minutes">Minutes:</label>
+                    <input type="number" id="study-minutes" min="0" placeholder="0">
+                    <label for="study-seconds">Seconds:</label>
+                    <input type="number" id="study-seconds" min="0" placeholder="0">
+                </div>
+                
+                <div class="button-container">
+                    <button id="start-timer">Start Timer</button>
+                    <button id="stop-timer" class="hidden">Stop & Reset Timer</button>
+                </div>
+            </div>
+        </div>
+    </main>
 
     <audio id="alarm-sound" src="sound.mp3" preload="auto"></audio>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        // Timer JS Logic
+        $(document).ready(function () {
+            let timerInterval;
+            let totalTime;
+            const $timerDisplay = $('#timer-display');
+            const $startButton = $('#start-timer');
+            const $stopButton = $('#stop-timer');
+            const alarmSound = document.getElementById('alarm-sound');
+
+            $startButton.on('click', function () {
+                const hours = parseInt($('#study-hours').val()) || 0;
+                const minutes = parseInt($('#study-minutes').val()) || 0;
+                const seconds = parseInt($('#study-seconds').val()) || 0;
+
+                // Calculate total time in seconds
+                totalTime = (hours * 3600) + (minutes * 60) + seconds;
+
+                if (totalTime > 0) {
+                    startCountdown();
+                    $stopButton.removeClass('hidden');  // Show stop/reset button
+                } else {
+                    $timerDisplay.text("Please set a time.");
+                }
+            });
+
+            $stopButton.on('click', function () {
+                clearInterval(timerInterval);  // Stop the countdown
+                alarmSound.pause();  // Stop the sound
+                alarmSound.currentTime = 0;  // Reset sound to the beginning
+                resetTimerDisplay();
+                $stopButton.addClass('hidden');  // Hide stop/reset button
+            });
+
+            function startCountdown() {
+                clearInterval(timerInterval);  // Clear any existing interval
+                timerInterval = setInterval(() => {
+                    if (totalTime > 0) {
+                        const display = formatTime(totalTime);
+                        $timerDisplay.text(display);
+                        totalTime--;
+                    } else {
+                        clearInterval(timerInterval);
+                        $timerDisplay.text("Time's up!");
+                        alarmSound.play();  // Play the sound when time is up
+                    }
+                }, 1000);
+            }
+
+            function resetTimerDisplay() {
+                $timerDisplay.text("00:00:00");
+                $('#study-hours').val('');
+                $('#study-minutes').val('');
+                $('#study-seconds').val('');
+            }
+
+            function formatTime(seconds) {
+                const hours = Math.floor(seconds / 3600);
+                const minutes = Math.floor((seconds % 3600) / 60);
+                const remainingSeconds = seconds % 60;
+
+                return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(remainingSeconds).padStart(2, '0')}`;
+            }
+        });
+
+        
+        // Toggle menu visibility
+        document.getElementById("menu-icon").addEventListener("click", function () {
+            const menu = document.getElementById("dropdown-menu");
+            menu.classList.toggle("show");
+        });
+    </script>
+ 
 </body>
+
 </html>

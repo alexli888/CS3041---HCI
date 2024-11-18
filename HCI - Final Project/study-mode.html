@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Mode</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="study-mode.js"></script>
+</head>
+
+        <!-- Hamburger Menu Button -->
+        <div class="menu-icon" id="menu-icon">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+    <!-- Dropdown Menu -->
+    <div class="dropdown-menu" id="dropdown-menu">
+        <a href="home.html">Home</a>
+        <a href="timer.html">Study Timer</a>
+        <a href="study-mode.html">Study Mode</a>
+        <a href="calendar.html">Calendar</a>
+
+    </div>
+<body>
+    <!-- <nav class="navbar">
+        <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="timer.html">Timer</a></li>
+            <li><a href="study-mode.html" class="active">Study Mode</a></li>
+            <li><a href="calendar.html">Calendar</a></li>
+            <li><a href="menu.html">Menu</a></li>
+        </ul> -->
+    </nav>
+    <main>
+        <div class="container">
+            <h2>Study Mode</h2>
+            <p>Select a focus mode to optimize your study session:</p>
+            <div class="study-mode-options">
+                <button id="focus-mode">Focus Mode</button>
+                <button id="interval-mode">Interval Mode</button>
+                <button id="custom-mode">Custom Mode</button>
+            </div>
+            <div id="study-info">
+                <!-- Content dynamically updated by JavaScript -->
+            </div>
+        </div>
+    </main>
+    <script>
+        // Toggle menu visibility
+        document.getElementById("menu-icon").addEventListener("click", function() {
+            const menu = document.getElementById("dropdown-menu");
+            menu.classList.toggle("show");
+        });
+    </script>
+</body>
+
+</html>
