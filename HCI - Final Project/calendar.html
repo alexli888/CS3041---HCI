@@ -10,14 +10,16 @@
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.6/index.global.min.js" defer></script>
     <script defer src="calendar.js"></script>
 </head>
-        <!-- Hamburger Menu Button -->
-        <div class="menu-icon" id="menu-icon">
-            <div class="bar"></div>
-            <div class="bar"></div>
-            <div class="bar"></div>
-        </div>
 
-            <!-- Dropdown Menu -->
+<body>
+    <!-- Hamburger Menu Button -->
+    <div class="menu-icon" id="menu-icon">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div>
+
+    <!-- Dropdown Menu -->
     <div class="dropdown-menu" id="dropdown-menu">
         <a href="home.html">Home</a>
         <a href="timer.html">Study Timer</a>
@@ -26,22 +28,132 @@
         <a href="menu.html">Menu</a>
     </div>
 
-<body>
-
-    </nav>
     <main>
         <div class="container">
             <h2>Calendar</h2>
+            <!-- Button container with Flexbox -->
+            <div class="button-container">
+                <button id="add-event-btn">Add Event</button>
+                <button id="edit-event-btn">Edit Event</button>
+            </div>
             <div id="calendar"></div>
         </div>
     </main>
+
     <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const calendarEl = document.getElementById('calendar');
+            const calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                editable: true,
+                droppable: true,
+                events: [
+                    { title: 'Study Math', start: '2024-11-20', id: '1' },
+                    { title: 'Group Project', start: '2024-11-22', id: '2' }
+                ],
+                eventRender: function (info) {
+                    // Add edit button next to event
+                    const editButton = document.createElement('button');
+                    editButton.textContent = 'Edit';
+                    editButton.classList.add('edit-btn');
+                    editButton.addEventListener('click', function () {
+                        const newTitle = prompt("Edit event title:", info.event.title);
+                        if (newTitle) {
+                            info.event.setProp('title', newTitle); // Update event title
+                        }
+                    });
+
+                    // Append the edit button to the event element
+                    info.el.appendChild(editButton);
+                },
+                eventDrop: function (info) {
+                    alert(`${info.event.title} was moved to ${info.event.start.toISOString().split('T')[0]}`);
+                }
+            });
+            calendar.render();
+
+            // Add Event Button
+            document.getElementById('add-event-btn').addEventListener('click', function () {
+                const title = prompt("Enter event title:");
+                const date = prompt("Enter event date (YYYY-MM-DD):");
+                if (title && date) {
+                    calendar.addEvent({
+                        title: title,
+                        start: date
+                    });
+                }
+            });
+
+            // Edit Event Button
+            document.getElementById('edit-event-btn').addEventListener('click', function () {
+                const eventId = prompt("Enter event ID to edit:");
+                const event = calendar.getEventById(eventId);
+                if (event) {
+                    const newTitle = prompt("Edit event title:", event.title);
+                    if (newTitle) {
+                        event.setProp('title', newTitle); // Update event title
+                    }
+                } else {
+                    alert('Event not found!');
+                }
+            });
+        });
+
         // Toggle menu visibility
-        document.getElementById("menu-icon").addEventListener("click", function() {
+        document.getElementById("menu-icon").addEventListener("click", function () {
             const menu = document.getElementById("dropdown-menu");
             menu.classList.toggle("show");
         });
     </script>
+
+    <style>
+        /* Basic styles for the edit button */
+        .edit-btn {
+            margin-top: 10px;
+            padding: 5px 10px;
+            font-size: 14px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .edit-btn:hover {
+            background-color: #45a049;
+        }
+
+        /* Flex container for buttons */
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        #add-event-btn, #edit-event-btn {
+            padding: 10px 20px;
+            font-size: 14px;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        #add-event-btn {
+            background-color: #4CAF50;
+        }
+
+        #add-event-btn:hover {
+            background-color: #45a049;
+        }
+
+        #edit-event-btn {
+            background-color: #FF9800;
+        }
+
+        #edit-event-btn:hover {
+            background-color: #FB8C00;
+        }
+    </style>
 </body>
 
 </html>
