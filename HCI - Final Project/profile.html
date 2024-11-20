@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 50%;
+            margin: auto;
+            overflow: hidden;
+        }
+        header {
+            background: #333;
+            color: #fff;
+            padding-top: 30px;
+            min-height: 70px;
+            border-bottom: #77aaff 3px solid;
+        }
+        header a {
+            color: #fff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 16px;
+        }
+        header ul {
+            padding: 0;
+            list-style: none;
+        }
+        header li {
+            float: right;
+            display: inline;
+            padding: 0 20px 0 20px;
+        }
+        .profile {
+            background: #fff;
+            padding: 20px;
+            margin-top: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .profile h2 {
+            margin-top: 0;
+        }
+        .profile label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        .profile input[type="text"], .profile input[type="email"], .profile input[type="tel"], .profile input[type="url"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        .profile button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background: #333;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        .profile button:hover {
+            background: #555;
+        }
+        .menu-button {
+            margin-top: 10px;
+            background: #77aaff;
+        }
+        .menu-button:hover {
+            background: #5599dd;
+        }
+        .popup {
+            display: none;
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            border-radius: 5px;
+            padding: 15px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            font-size: 14px;
+        }
+        .login-popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+        .login-popup input[type="text"], .login-popup input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        .login-popup button {
+            width: 100%;
+            padding: 10px;
+            background: #333;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        .login-popup button:hover {
+            background: #555;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Profile Page</h1>
+            <ul>
+                <li><a href="#" onclick="logout()">Logout</a></li>
+                <li><a href="#" onclick="showLoginPopup()">Login</a></li>
+            </ul>
+        </div>
+    </header>
+    <div class="container">
+        <div class="profile">
+            <h2>Edit Profile</h2>
+            <form onsubmit="showPopup(event)">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" value="Alex Li">
+                
+                <label for="email">Email Address:</label>
+                <input type="email" id="email" name="email" value="fakeemail@gmail.com">
+                
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone" name="phone" placeholder="Enter phone number">
+                
+                <label for="social">Social Media Link:</label>
+                <input type="url" id="social" name="social" value="https://www.linkedin.com/in/alex-li-59471623a/">
+                
+                <button type="submit">Save Changes</button>
+            </form>
+            <button class="menu-button" onclick="location.href='menu.html'">Go to Menu</button>
+        </div>
+    </div>
+    <div class="popup" id="popup">Changes saved!</div>
+    <div class="popup" id="logoutPopup">Successfully logged out!</div>
+    <div class="login-popup" id="loginPopup">
+        <h2>Login</h2>
+        <form onsubmit="login(event)">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+            
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            
+            <button type="submit">Login</button>
+        </form>
+    </div>
+    <script>
+        function showLoginPopup() {
+            document.getElementById('loginPopup').style.display = 'block';
+        }
+
+        function login(event) {
+            event.preventDefault(); // Prevent form submission
+            // Simulate login process
+            document.getElementById('loginPopup').style.display = 'none';
+            alert('Logged in successfully!');
+            // Redirect to profile page or refresh
+            location.href = 'profile.html';
+        }
+
+        function logout() {
+            // Clear all fields in the Edit Profile screen
+            document.getElementById('name').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById('phone').value = '';
+            document.getElementById('social').value = '';
+            
+            // Show logout popup
+            const logoutPopup = document.getElementById('logoutPopup');
+            logoutPopup.style.display = 'block';
+            setTimeout(() => {
+                logoutPopup.style.display = 'none';
+            }, 3000); // Hide popup after 3 seconds
+        }
+
+        function showPopup(event) {
+            event.preventDefault(); // Prevent form submission
+            const popup = document.getElementById('popup');
+            popup.style.display = 'block';
+            setTimeout(() => {
+                popup.style.display = 'none';
+            }, 3000); // Hide popup after 3 seconds
+        }
+    </script>
+</body>
+</html>

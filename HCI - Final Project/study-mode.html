@@ -43,10 +43,14 @@
                 <button id="custom-mode">Custom Mode</button>
             </div>
             <div id="study-info">
-                <!-- Content dynamically updated by JavaScript -->
+          
             </div>
         </div>
     </main>
+    <a href="documentation.html" class="question-mark-icon" title="How to Use" style="position: absolute; top: 20px; right: 10px; z-index: 1000;">
+        <img src="images/question-mark-icon.png" alt="Help" style="width: 40px; height: 40px; filter: invert(1);"> <!-- Changed to white color -->
+    </a>
+    <script defer src="study-mode.js"></script>
     <script>
         // Toggle menu visibility
         document.getElementById("menu-icon").addEventListener("click", function() {

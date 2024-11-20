@@ -17,7 +17,7 @@
         }
 
         body {
-            background-color: #f4f4f4;
+            background-color: #ffffff; /* Default to white */
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -93,9 +93,12 @@
             font-size: 48px;
             margin: 20px 0;
             padding: 20px;
-            background-color: white;
+            background-color: #fff;
             text-align: center;
             border-radius: 10px;
+            border: 2px solid #000; /* Black border for a classic look */
+            color: #4caf50; /* Green text color */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
         }
 
         /* Input Group Styling */
@@ -131,6 +134,8 @@
             font-size: 16px;
             cursor: pointer;
             border-radius: 4px;
+            border: none; /* Remove default border */
+            transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transitions */
         }
 
         #start-timer {
@@ -144,12 +149,36 @@
         }
 
         button:hover {
-            opacity: 0.8;
+            opacity: 0.9;
+            transform: scale(1.05); /* Slightly enlarge on hover */
         }
 
         /* Hide the stop button initially */
         .hidden {
             display: none;
+        }
+
+        .color-picker-container {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .color-picker-container label {
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .color-picker-container input[type="color"] {
+            cursor: pointer;
+            border: none;
+            width: 40px;
+            height: 40px;
+            padding: 0;
+        }
+
+        .color-picker-container button {
+            background-color: #007bff;
+            color: white;
         }
 
     </style>
@@ -171,6 +200,9 @@
         <div class="bar"></div>
     </div>
 
+    <a href="documentation.html" class="question-mark-icon" title="How to Use" style="position: absolute; top: 20px; right: 10px;">
+        <img src="images/question-mark-icon.png" alt="Help" style="width: 40px; height: 40px;">
+    </a>
 
     
     <!-- Dropdown Menu -->
@@ -202,9 +234,14 @@
                     <button id="stop-timer" class="hidden">Stop & Reset Timer</button>
                 </div>
             </div>
+            <div class="color-picker-container">
+                <label for="background-color-picker">Choose Background Color:</label>
+                <input type="color" id="background-color-picker">
+                <button id="apply-background-color">Apply</button>
+            </div>
         </div>
     </main>
-
+    
     <audio id="alarm-sound" src="sound.mp3" preload="auto"></audio>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -229,6 +266,7 @@
                 if (totalTime > 0) {
                     startCountdown();
                     $stopButton.removeClass('hidden');  // Show stop/reset button
+                    $startButton.addClass('hidden');  // Hide start button
                 } else {
                     $timerDisplay.text("Please set a time.");
                 }
@@ -240,6 +278,7 @@
                 alarmSound.currentTime = 0;  // Reset sound to the beginning
                 resetTimerDisplay();
                 $stopButton.addClass('hidden');  // Hide stop/reset button
+                $startButton.removeClass('hidden');  // Show start button
             });
 
             function startCountdown() {
@@ -278,6 +317,11 @@
         document.getElementById("menu-icon").addEventListener("click", function () {
             const menu = document.getElementById("dropdown-menu");
             menu.classList.toggle("show");
+        });
+
+        document.getElementById("apply-background-color").addEventListener("click", function () {
+            const color = document.getElementById("background-color-picker").value;
+            document.body.style.backgroundColor = color;
         });
     </script>
  

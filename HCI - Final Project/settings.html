@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .settings-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .setting-item {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        select, input[type="checkbox"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="settings-container">
+        <h1>Settings</h1>
+        
+        <div class="setting-item">
+            <label for="theme">Theme</label>
+            <select id="theme">
+                <option value="light">Light Mode</option>
+                <option value="dark">Dark Mode</option>
+            </select>
+        </div>
+        
+        <div class="setting-item">
+            <label for="font-size">Font Size</label>
+            <select id="font-size">
+                <option value="small">Small</option>
+                <option value="medium">Medium</option>
+                <option value="large">Large</option>
+            </select>
+        </div>
+        
+        <div class="setting-item">
+            <label for="high-contrast">High Contrast Mode</label>
+            <input type="checkbox" id="high-contrast">
+        </div>
+        
+        <div class="setting-item">
+            <label for="cookies">Cookies</label>
+            <input type="checkbox" id="cookies">
+        </div>
+        
+        <div class="setting-item">
+            <label for="accessibility">Accessibility Features</label>
+            <input type="checkbox" id="accessibility">
+        </div>
+    
+    </div>
+    <div class="settings-container">
+        <!-- Your settings form elements go here -->
+
+        <!-- Back to Menu Button -->
+        <button class="back-button" onclick="window.location.href='menu.html'">Back to Menu</button>
+    </div>
+</body>
+</html>
