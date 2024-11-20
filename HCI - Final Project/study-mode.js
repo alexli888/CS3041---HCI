@@ -172,7 +172,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
     function handleVisibilityChange() {
         if (document.hidden) {
-            alert("You cannot switch tabs or minimize the window during focus mode.");
             window.focus();
         }
     }
